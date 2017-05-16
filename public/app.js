@@ -23,7 +23,7 @@ btnLogin.addEventListener('click', e => {
 	const pass = password.value;
 	const auth = firebase.auth();
 
-	// Sign In 
+	// Log In 
 	const promise = auth.signInWithEmailAndPassword(email, pass);
 	promise.catch(e => 
 		//alert(e.message);
@@ -32,7 +32,7 @@ btnLogin.addEventListener('click', e => {
 		console.log('Log in successful!'));
 });
 
-// Add Sign Up EVent
+// Add Sign Up Event
 btnSignup.addEventListener('click', e => {
 
 	// Get Email and password
@@ -40,7 +40,7 @@ btnSignup.addEventListener('click', e => {
 	const pass = password.value;
 	const auth = firebase.auth();
 
-	// Sign In 
+	// Sign Up 
 	const promise = auth.createUserWithEmailAndPassword(email, pass);
 	promise.catch(e => 
 		//alert(e.message);
@@ -48,6 +48,10 @@ btnSignup.addEventListener('click', e => {
 	promise.then(success =>
 		console.log('Sign up successful'));
 });
+// Add Log out Event
+btnLogout.addEventListener('click', e =>{
+		firebase.auth().signOut();
+	})
 
 // Add a realtime listener
 firebase.auth().onAuthStateChanged(user => {
