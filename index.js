@@ -23,12 +23,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get ('/', (req,res) => {
-	res.render('index', {
+	res.render('home', {
 		name: "Fred Adewole"
 	});
 })
 
 // Set server port
-app.listen(3000, e => {
+app.listen(process.env.PORT || 3000, e => {
 	console.log('Server running on port 3000...');
 })
