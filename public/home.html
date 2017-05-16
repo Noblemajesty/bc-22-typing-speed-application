@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Typecastic</title>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+<!-- Leave out Storage -->
+<!-- <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-storage.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+
+<script>
+  // Initialize Firebase
+</script>
+<!-- <script type="text/javascript">
+		const check = function() {
+			let info;
+			let first = document.getElementById('entryOne').value;
+			let second = document.getElementById('entryTwo').value;
+			if (first.length > 1 && second.length > 1) {
+				if (first == second) {
+					info = 'Passwords match';
+				} else {
+					info = 'Passwords do not match!';
+				}
+			} else {
+				info = "Password field can't be empty!"
+			}
+			alert (info);
+		}
+</script> -->
+</head>
+<body>
+<div class = 'container'>
+<fieldset>
+	<legend>Sign Up</legend>
+		<label> <h3> <strong> Email: </strong> </h3> </label> <input type="email" id = "userEmail" placeholder="JohnDoe@example.com" required> <br>
+		<label> <h3> <strong> Password: </strong> </h3> </label> <input type="password" id = "entryOne" required> <br>
+		<!-- <label> <h3> <strong> Enter Password again: </strong> </h3> </label> <input type="password" id = "entryTwo" required> -->
+		<button id = 'signUp' value = 'Sign Up'>Sign Up</button> 
+		<button id = 'logIn' value = 'Log In'>Log In</button>
+</fieldset>
+<script type="text/javascript" src = 'app.js'></script>
+</div>
+</body>
+</html>
