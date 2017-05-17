@@ -1,4 +1,7 @@
 (function() {
+
+	//const app = require('../index.js');
+
 		const config = {
 	    apiKey: "AIzaSyBPGYA9kSi-XG6eiiHEWc2bdZNGNQNiKJc",
 	    authDomain: "typcastic.firebaseapp.com",
@@ -26,11 +29,20 @@
 
 		// Sign In 
 		const promise = auth.signInWithEmailAndPassword(email, pass);
-		promise.catch(e => 
-			//alert(e.message);
-			console.log(e.message));
-		promise.then(success =>
-			console.log('Log in successful!'));
+		promise.catch(e => {
+			alert(e.message);
+			console.log(e.message);
+			})
+		
+		promise.then(success => {
+			alert('Log in successful!');
+				/*app.get ('/leader', (req,res) => {
+				res.render('index', {
+					name: "Fred Adewole"
+				});
+				console.log('Log in successful!');
+			});*/
+		});
 	});
 
 	// Add Sign Up EVent
@@ -43,16 +55,21 @@
 
 		// Sign In 
 		const promise = auth.createUserWithEmailAndPassword(email, pass);
-		promise.catch(e => 
-			//alert(e.message);
-			console.log(e.message));
-		promise.then(success =>
-			console.log('Sign up successful'));
+		promise.catch(e => {
+			alert(e.message);
+			console.log(e.message);
+		});
+		promise.then(success => {
+			alert('Sign up successful');
+			console.log('Sign up successful');
+		});
 	});
 
 	// Add Log out Event
-	btnLogout.addEventListener('click', e =>{
+	btnLogout.addEventListener('click', e => {
 		firebase.auth().signOut();
+		alert('Log out successful');
+		console.log('Logged out successful');
 	})
 
 	// Add a realtime listener
@@ -65,5 +82,4 @@
 	});
 
 	//})
-
 }());
