@@ -1,7 +1,5 @@
 (function() {
 
-	//const app = require('../index.js');
-
 		const config = {
 	    apiKey: "AIzaSyBPGYA9kSi-XG6eiiHEWc2bdZNGNQNiKJc",
 	    authDomain: "typcastic.firebaseapp.com",
@@ -10,14 +8,19 @@
 	    storageBucket: "typcastic.appspot.com",
 	    messagingSenderId: "993313392998"
 	  };
+
 	  firebase.initializeApp(config);
 
 	  // Get elements from HTML
-	const mail = document.getElementById('userEmail');
-	const password = document.getElementById('entryOne');
+	const mail = document.getElementById('email');
+	const password = document.getElementById('password');
 	const btnLogin = document.getElementById('logIn');
-	const btnSignup = document.getElementById('signUp');
+	const btnSignup = document.getElementById('signup');
+	const message = document.getElementById('message');
 	const btnLogout = document.getElementById('logout');
+	const createEmail = document.getElementById('smail');
+	const createPassword = document.getElementById('spassword');
+	const error = document.getElementById('error');
 
 	// Add Login Event
 	btnLogin.addEventListener('click', e => {
@@ -30,18 +33,14 @@
 		// Sign In 
 		const promise = auth.signInWithEmailAndPassword(email, pass);
 		promise.catch(e => {
-			alert(e.message);
+			//alert(e.message);
+			message.innerHTML = "<div class='alert alert-danger alert-dismissable'> "+ e.message + " </div>";
 			console.log(e.message);
 			})
 		
 		promise.then(success => {
-			alert('Log in successful!');
-				/*app.get ('/leader', (req,res) => {
-				res.render('index', {
-					name: "Fred Adewole"
-				});
-				console.log('Log in successful!');
-			});*/
+			message.innerHTML = "<div class='alert alert-success alert-dismissable'>Log in successful</div>";
+			//alert('Log in successful!');
 		});
 	});
 
@@ -49,18 +48,20 @@
 	btnSignup.addEventListener('click', e => {
 
 		// Get Email and password
-		const email = mail.value;
-		const pass = password.value;
+		const email = createEmail.value;
+		const pass = createPassword.value;
 		const auth = firebase.auth();
 
 		// Sign In 
-		const promise = auth.createUserWithEmailAndPassword(email, pass);
+		const promise = auth.createUserWithEmailAndPassword(email,pass);
 		promise.catch(e => {
-			alert(e.message);
+			//alert(e.message);
+			error.innerHTML = "<div class='alert alert-danger alert-dismissable'> "+ e.message + " </div>";
 			console.log(e.message);
 		});
 		promise.then(success => {
 			alert('Sign up successful');
+			error.innerHTML = "<div class='alert alert-success alert-dismissable'>Sign up successful</div>";
 			console.log('Sign up successful');
 		});
 	});

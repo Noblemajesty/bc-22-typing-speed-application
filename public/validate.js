@@ -2,7 +2,7 @@
 // Form Validation
  validate = () => {
  	var email = document.getElementById('email').value;
- 	var password = document.getElementById('entryOne').value;
+ 	var password = document.getElementById('password').value;
  	var error = document.getElementById('message');
 
 
