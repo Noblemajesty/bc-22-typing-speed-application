@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Typecastic</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
+<script>
+  // Initialize Firebase
+</script>
+<script></script>
+</head>
+<body>
+<div class = 'container'>
+<form id = "myForm" method = "post" name = "loginReg">
+	<div class = "title">
+		<span id = "someTitle"> <h2>Title Here</h2> </span>
+	</div>
+  <div class="imgcontainer">
+    <img src="form.jpg" alt="Avatar" class="avatar">
+  </div>
+
+  <!-- <div class="container"> -->
+    <label class = "mail"><b>Email Address</b></label> <br>
+    <input type="text" placeholder="Enter Email" name="email" class = "email" id = "email" required> <br>
+
+    <label class = "pword"><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" name="password" class = "password" id = "password" required> <br>
+
+    <button type="submit" id = "logIn" onclick="validate()">Login</button> <br>
+    <button type="button" class="cancelbtn">Sign Up</button> <br>
+    <span id = 'message'>some message</span> <br>
+ <!--  </div> -->
+<!-- 
+  <div id="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Sign Up</button>
+    <span class="psw">Forgot <a href="#">password?</a></span> -->
+  </div> 
+</form>
+
+<!-- <div class = "form-group">
+<fieldset>
+	<legend>Log In</legend>
+	<form id = 'myForm' method="post" name = 'loginReg'>
+			<span id = 'message'> </span> <br>
+			<input type="email" id = "userEmail" placeholder="Email" name = 'email' class = 'form-control' required> <br> <br>
+			<input type="password" id = "entryOne" name = 'password' placeholder="Password" class = 'form-control' required> <br> <br>
+			<button class = "btn btn-primary" id = 'logIn' value = 'Log In' onclick="validate()">Log In</button> <br> <br>
+		</form>
+</fieldset>
+</div>
+<p>
+	<div class = 'modal'>
+	<fieldset>
+		<legend>Sign Up</legend>
+		<form id = 'singup' method = 'post' name = 'signReg' action = '#'>
+			<input type="text" name="firstName" placeholder="First Name" id = 'first'> <br> <br>
+			<input type="text" name="lastName" placeholder="Last Name" id = 'last'> <br> <br>
+			<input type="text" name="Email" placeholder="Mesutozil@arsenal.com" id = 'contact'><br> <br>
+			<input type="password" name="pass" placeholder="Password" id = 'passw'> <br> <br>
+			<button id = 'signup' value = 'Sign up' onclick = "register()">Sign Up</button>
+		</form>
+	</fieldset>
+	</div> -->
+</p>
+<script type="text/javascript" src = 'validate.js'></script>
+</div>
+</body>
+</html>
