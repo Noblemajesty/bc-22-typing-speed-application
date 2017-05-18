@@ -1,0 +1,108 @@
+<head>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
+<title>Welcome...</title>	<meta charset = 'utf-8' lang = 'en-us'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel = "stylesheet" type="text/css" href = "settings.css">
+<style>
+	#text { display: none; }
+</style>
+<link rel="stylesheet" type="text/css" href="">
+<script type="text/javascript">
+	const app = function() {
+		let userText = document.getElementById('userText').value;
+		let main = document.getElementById('main').value;
+		let result = document.getElementById('result');
+		alert(userText);
+
+		document.getElementById('result').innerHTML = '<h3> ' + userText + '</h3>';
+
+		/*setTimeout(function() {
+    	$('#userText').fadeOut('fast');
+		}, 10000);*/
+		return false;
+	}
+</script>
+<script type="text/javascript">
+	const tell = function() {
+		alert('Ready to start typing!');
+		let current = new Date();
+		let timer = current.getSeconds();
+		alert(timer);
+	};
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		let count = 0;
+		$('#userText').bind('paste',function(e){
+			e.preventDefault();
+		});
+		
+    })
+</script>
+<script type="text/javascript">
+	const getResult = function() {
+		document.getElementById('userText').disabled = true;
+		let userText = document.getElementById('userText').value;
+		let main = document.getElementById('main').value;
+		let result = document.getElementById('result');
+		//alert('You typed in '+ userText.length + ' letters');
+		let wordList = userText.split(' ');
+		let mainList = main.split(' ');
+		let mainWord = userText.split(' ').length;
+		let errors = 0;
+
+		for (let i = 0; i < wordList.length; i++) {
+			if( mainList[i] != wordList[i]) {
+				errors++;
+			} //return errors;
+		}
+
+		const GWPM = ((userText.length/5)/1);
+		const NWPM = (GWPM - (errors/1));
+
+		result = {
+			"Number of words typed": mainWord,
+			"Number of letter typed": userText.length,
+			"Gross Words per minute": GWPM,
+			"Net Words per Minute": NWPM,
+			"Number of Errors": errors
+		};
+
+		console.log(result);
+		//alert (result);
+
+	}
+</script>
+<script type="text/javascript">
+	const show = function() {
+		let x = document.getElementById('text');
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+		} else {
+			x.style.display = 'block';
+		}
+	}
+</script>
+</head>
+<body>
+	<h2> Hello, Welcome to this app</h2>
+	<a href = "/leader"> leader board </a>
+	<h3>To start text, <button onclick="show()">Click Here</button></h3>
+	<form>
+		<h2>Your time starts when you click the text area.</h2>
+		<div id = 'text'>
+		<div><p id = 'result'></p></div>
+		<textarea id = 'main' disabled rows = "6" cols ="50">This is just some text to check for some word you type. Ensure you type correctly. </textarea>  <br>
+		</div><br>
+		<div id ='user'>
+			<textarea id = 'userText' rows = "6" cols = "50" onfocus="setTimeout(getResult, 10000)"></textarea> <br>
+		</div> <br> <br>
+		<a href ="/home"><button name="logout" id ="logout" value = "Log Out">Log Out</button></a>
+		<input type="submit" value="Check speed" onclick="getResult(); return false"> <br>
+	</form>
+	<script type="text/javascript" src = 'authindex.js'></script>
+
+
+</body>
