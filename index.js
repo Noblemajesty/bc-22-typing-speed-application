@@ -15,20 +15,10 @@ const config = {
 	    messagingSenderId: "993313392998"
 	  };
 firebase.initializeApp(config);
+
 const auth = firebase.auth();
-
 const user = firebase.auth().currentUser;
-//console.log(user);
-
-/*
-let logger = (req, res, next) => {
-	console.log('Logging...');
-	next();
-}
-
-app.use(logger);*/
-
-// Set view Engine
+// Set View Engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -36,163 +26,54 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-// Set static Path
-//app.use('/static', express.static('public'));
+// Set Static path
 app.use(express.static(path.join(__dirname + '/public')));
 
-app.get('/register', (req, res) => {
-	res.render('home');
-});
-
-/*app.post('/register', (req,res) => {
-	console.log(req.body.email);
-	let promise = auth.signInWithEmailAndPassword(req.body.email, req.body.password);
-	promise.catch(e => {
-		res.redirect('/');
-		//console.log('Oops, an error occurred');
-		
-	})
-	promise.then(success = (resp) => {
-		if (user) {
-			console.log('Log in successful!');
-			//console.log(user);
-		//alert('Log in successful!');
-			res.render('index');
-		} else {
-			res.redirect('/');
-		}
-	})
-
-});
-*/
-app.post('/', (req,res) => {
-	console.log(1234);
-	let promise = auth.signInWithEmailAndPassword(req.body.email, req.body.password);
-	promise.catch(e => {
-		res.redirect('/');
-		//res.end();
-		//console.log('Oops, an error occurred');
-		
-	})
-	promise.then((user) => {
-		if (user) {
-			console.log('Log in successful!');
-			console.log(1234);
-			//alert('Log in successful!');
-			res.render('index');
-		} else {
-			res.redirect('/');
-			res.end();
-		}
-	})
-});
-
-app.get ('/', (req,res) => {
+app.get('/', function(req,res) {
 	res.sendFile(__dirname + '/views/home.html');
+})
+
+app.post('/index', function(req,res) {
+	auth.signInWithEmailAndPassword(req.body.email, req.body.password).then((resp)=>{
+                if(resp.uid){
+                        res.sendFile(__dirname + '/views/index.html');                        
+                }
+        }).catch((e)=>{
+                console.log(e)
+                res.redirect('/');
+        });
+	/*auth.signInWithEmailAndPassword(req.body.email,req.body.password).then((success => {
+		if(success.uid) {
+			res.sendFile(__dirname + '/views/index.html');
+		}
+	}))*/
 });
 
-app.get('/index', (req,res) => {
-		if (user) {
-			res.render('index', {
-				name: user.email
-			});
-
-		} else {
-			res.redirect('/');
+app.post('/signup', function(req,res) {
+	auth.createUserWithEmailAndPassword(req.body.email, req.body.body).then((resp) => {
+		if(resp){
+			res.sendFile(__dirname + '/views/index.html');
 		}
-			//console.log('not logged in');
-	//res.redirect('/');
-});
-
-/*app.get("/leader",(req,res)=>{
-	auth.onAuthStateChanged((user)=>{
-		if(user){
-			res.send("leader")
-		}
-		res.redirect("/");
+	}).catch((e) =>{
+		console.log(e.message);
+		res.redirect('/');
 	})
-})*/
-app.get('/leader', (req,res) => {
-	if (user) {
-		res.render('leader');
-	}  else {
+})
+
+app.get('/leader', function(req,res) {
+	if(user) {
+		res.render('/leader');
+	} else {
 		res.redirect('/');
 	}
 })
 
-firebase.auth().onAuthStateChanged(user => {
-	if (user) {
-		console.log(user);
-	} else {
-		console.log('not logged in');
-	}
+app.get('/logout', function(req,res) {
+	auth.singOut();
+	res.redirect('/views/index.html');
 });
 
-
-
- /*// Get elements from HTML
-	const mai
-	l = document.getElementById('userEmail');
-	const password = document.getElementById('entryOne');
-	const btnLogin = document.getElementById('logIn');
-	const btnSignup = document.getElementById('signUp');
-	const btnLogout = document.getElementById('logout');
-
-	// Add Login Event
-	btnLogin.addEventListener('click', e => {
-
-		// Get Email and password
-		const email = mail.value;
-		const pass = password.value;
-		const auth = firebase.auth();
-
-		// Sign In 
-		const promise = auth.signInWithEmailAndPassword(email, pass);
-		promise.catch(e => {
-			alert(e.message);
-			console.log(e.message);
-			})
-		
-		promise.then(success => {
-			alert('Log in successful!');
-				app.get ('/leader', (req,res) => {
-				res.render('index', {
-					name: "Fred Adewole"
-				});
-				console.log('Log in successful!');
-			});
-		});
-	});
-
-	// Add Sign Up EVent
-	btnSignup.addEventListener('click', e => {
-
-		// Get Email and password
-		const email = mail.value;
-		const pass = password.value;
-		const auth = firebase.auth();
-
-		// Sign In 
-		const promise = auth.createUserWithEmailAndPassword(email, pass);
-		promise.catch(e => {
-			alert(e.message);
-			console.log(e.message);
-		});
-		promise.then(success => {
-			alert('Sign up successful');
-			console.log('Sign up successful');
-		});
-	});
-
-	// Add Log out Event
-	btnLogout.addEventListener('click', e => {
-		firebase.auth().signOut();
-		alert('Log out successful');
-		console.log('Logged out successful');
-	})
-
-	// Add a realtime listener
-	firebase.auth().onAuthStateChanged(user => {
+/*firebase.auth().onAuthStateChanged(user => {
 		if (user) {
 			console.log(user);
 		} else {
@@ -200,8 +81,6 @@ firebase.auth().onAuthStateChanged(user => {
 		}
 	});*/
 
-// Set server port
 app.listen(process.env.PORT || 3000, e => {
 	console.log('Server running on port 3000...');
 });
-module.exports = app
