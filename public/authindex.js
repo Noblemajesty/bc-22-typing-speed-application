@@ -20,7 +20,7 @@
 	
 	btnLogout.addEventListener('click', e => {
 		firebase.auth().signOut();
-		window.location.href = "http://localhost:3000";
+		window.location.href = "http://bc-22-typtastic.herokuapp.com";
 		//alert('Log out successful');
 		console.log('Logged out successful');
 		
@@ -34,7 +34,7 @@
 			console.log(user.email);
 		} else {
 			console.log('not logged in');
-			window.location.href = "http://localhost:3000";
+			window.location.href = "http://bc-22-typtastic.herokuapp.com";
 			
 		}
 	});
