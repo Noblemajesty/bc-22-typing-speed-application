@@ -1,0 +1,50 @@
+body {
+	background-image: url("website.png");
+	color: white;
+}
+.modal-body {
+	color: black;
+	text-align: left;
+}
+
+#userText {
+	width: 70%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-family: verdana;
+    font-size: 20px;
+}
+
+#main {
+	color: black;
+	width: 70%;
+	height: 150px;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border-radius: 2px solid #ccc;
+	border-radius: 4px;
+	background-color: #f8f8f8;
+	resize: none;
+	font-size: 20px;
+	font-weight: bold;
+	font-style: oblique;
+	color: black;
+}
+
+#logout {
+	margin-right: 50px;
+}
+
+.typtastic {
+	font-family: verdana;
+	font-style: oblique;;
+}

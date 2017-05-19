@@ -1,0 +1,122 @@
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
+<title>Welcome...</title>	<meta charset = 'utf-8' lang = 'en-us'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel = "stylesheet" type="text/css" href = "settings.css">
+<style>
+	#text { display: none; }
+</style>
+<link rel="stylesheet" type="text/css" href="">
+<script type="text/javascript">
+	const app = function() {
+		let userText = document.getElementById('userText').value;
+		let main = document.getElementById('main').value;
+		let result = document.getElementById('result');
+		alert(userText);
+
+		document.getElementById('result').innerHTML = '<h3> ' + userText + '</h3>';
+
+		
+		return false;
+	}
+</script>
+<script type="text/javascript">
+	const tell = function() {
+		alert('Ready to start typing!');
+		let current = new Date();
+		let timer = current.getSeconds();
+		alert(timer);
+	};
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		let count = 0;
+		$('#userText').bind('paste',function(e){
+			e.preventDefault();
+		});
+		
+    })
+</script>
+<script type="text/javascript" src = "main.js">
+	
+</script>
+<script type="text/javascript">
+	const show = function() {
+		let x = document.getElementById('text');
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+		} else {
+			x.style.display = 'block';
+		};
+	}
+</script>
+</head>
+<body >
+	<div align = "right">
+		<br>
+		<br>
+		 <button align = "left" type = "button" class = "btn btn-danger" name="logout" id ="logout" value = "Log Out" align = 'right'>Log Out</button>
+	</div>
+	<div class="container" align = "center">
+	
+	<h2> <span class = 'typtastic'>Typtastic - Complete a Typing Test in<span color = 'red'> 60 Seconds!</span></span> </h2> <br>
+	<h4> Check your true typing speed, accuracy in just 60 seconds with our wpm test </h4>
+	<h3>To start text, <button class = "btn btn-info" onclick="show()">prove yourself!</button></h3> <br>
+		<h2>Your time starts when you click the text area.</h2>
+		<div id = 'text'>
+		<div><p id = 'result'></p></div>
+	 <textarea id = 'main' disabled rows = "6" cols ="50" class = 'field'>This is just some text to check for some word you type. Ensure you type correctly. What do you call it when Batman skips church? Christian Bale. A soldier survived mustard gas in battle, and then pepper spray by the police. He's now a seasoned veteran. It’s hard to explain puns to kleptomaniacs because they always take things literally.  </textarea>  <br>
+		<h2></h2>
+		</div><br>
+		<div id ='user'>
+			<textarea id = 'userText' rows = "6" cols = "50" class = 'field' onfocus="setTimeout(getResult, 60000)" placeholder="You click here to start typing"></textarea> <br>
+		</div> <br> <br>
+		
+		<button type="button" class = "btn btn-primary" value="View Result" data-target = "#myModal" data-toggle = "modal" onclick="getResult(); return false"> View Result </button> <br>
+
+		<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"> Your Typing result </h4>
+      </div>
+      <div class="modal-body">
+        <h4> Words Typed: <span id = "words"></span> </h4>
+        <h4> Keyboard strokes: <span id = "keystrokes"></span> </h4>
+        <h4> Gross Word per Minute: <span id = "grossword"></span> </h4>
+        <h4> Number of Errors made: <span id = "error"></span> </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src = 'authindex.js'></script>
+</div>
+
+</body>
